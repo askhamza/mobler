@@ -13,6 +13,10 @@ namespace mobler.Controllers
         {
             return View();
         }
-
+        [Route("/connexion")]
+        public ActionResult Connexion()
+        {
+            return View();
+        }
     }
 }

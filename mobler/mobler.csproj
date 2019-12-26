@@ -577,6 +577,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Visiteur\Index.cshtml" />
+    <Content Include="Views\Visiteur\Connexion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Img\blog\latest-post\" />
