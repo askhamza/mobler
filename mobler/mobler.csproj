@@ -128,43 +128,44 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VisiteurController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Categorie.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Devi.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1fdfsd.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1fdfsd.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1fdfsd.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SubCategorie.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utilisateur.cs">
-      <DependentUpon>Model1fdfsd.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,7 +185,9 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\lightslider.min.css" />
     <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\nice-select.css" />
+    <Content Include="Content\css\normalize.min.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\price_rangs.css" />
     <Content Include="Content\css\slick-theme.min.css" />
@@ -335,6 +338,8 @@
     <Content Include="Img\left_sharp.png" />
     <Content Include="Img\login.jpg" />
     <Content Include="Img\logo.png" />
+    <Content Include="Img\Mobler\Mobler.png" />
+    <Content Include="Img\Mobler\Mobler_Empty.png" />
     <Content Include="Img\offer-bg.png" />
     <Content Include="Img\offer_img.png" />
     <Content Include="Img\post\next.png" />
@@ -484,26 +489,19 @@
     <Content Include="Img\product\single-product\s-product-s-3.jpg" />
     <Content Include="Img\product\single-product\s-product-s-4.jpg" />
     <Content Include="Img\subscribe_area.png" />
-    <Content Include="Models\Model1fdfsd.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model1fdfsd.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1fdfsd.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model1fdfsd.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\js\aos.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\css\style.map" />
     <Content Include="fonts\Flaticon.eot" />
     <Content Include="fonts\Flaticon.ttf" />
@@ -523,6 +521,42 @@
     <Content Include="Img\product\.DS_Store" />
     <Content Include="Img\product\blog\.DS_Store" />
     <Content Include="Img\product\product\.DS_Store" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\sass\style.scss" />
+    <Content Include="Content\sass\_about_us.scss" />
+    <Content Include="Content\sass\_banner.scss" />
+    <Content Include="Content\sass\_best_seller.scss" />
+    <Content Include="Content\sass\_blog.scss" />
+    <Content Include="Content\sass\_blog_part.scss" />
+    <Content Include="Content\sass\_breadcrumb.scss" />
+    <Content Include="Content\sass\_button.scss" />
+    <Content Include="Content\sass\_client_logo.scss" />
+    <Content Include="Content\sass\_common.scss" />
+    <Content Include="Content\sass\_confirmation_part.scss" />
+    <Content Include="Content\sass\_contact.scss" />
+    <Content Include="Content\sass\_copyright_part.scss" />
+    <Content Include="Content\sass\_cource_details.scss" />
+    <Content Include="Content\sass\_cta_part.scss" />
+    <Content Include="Content\sass\_elements.scss" />
+    <Content Include="Content\sass\_extends.scss" />
+    <Content Include="Content\sass\_feature_part.scss" />
+    <Content Include="Content\sass\_footer.scss" />
+    <Content Include="Content\sass\_menu.scss" />
+    <Content Include="Content\sass\_mixins.scss" />
+    <Content Include="Content\sass\_our_offer.scss" />
+    <Content Include="Content\sass\_product.scss" />
+    <Content Include="Content\sass\_product_list.scss" />
+    <Content Include="Content\sass\_review.scss" />
+    <Content Include="Content\sass\_single_blog.scss" />
+    <Content Include="Content\sass\_special_cource.scss" />
+    <Content Include="Content\sass\_subscribe_area.scss" />
+    <Content Include="Content\sass\_variables.scss" />
     <None Include="Scripts\js\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\js\contact.js" />
     <Content Include="Scripts\js\custom.js" />
@@ -578,9 +612,17 @@
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Visiteur\Index.cshtml" />
     <Content Include="Views\Visiteur\Connexion.cshtml" />
+    <Content Include="Views\Admin\AjouterCat.cshtml" />
+    <Content Include="Views\Shared\_Master_Admin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_Dash.cshtml" />
+    <Content Include="Views\Admin\AjouterSubCat.cshtml" />
+    <Content Include="Views\Admin\AjouterAdmin.cshtml" />
+    <Content Include="Views\Admin\AjouterArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Img\blog\latest-post\" />
+    <Folder Include="Img\Categorie\" />
     <Folder Include="Img\product\blog\latest-post\" />
   </ItemGroup>
   <ItemGroup>

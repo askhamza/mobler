@@ -8,12 +8,12 @@ namespace mobler.Controllers
 {
     public class VisiteurController : Controller
     {
-        [Route("/acceuil")]
+        //[Route("/acceuil")]
         public ActionResult Index()
         {
             return View();
         }
-        [Route("/connexion")]
+       // [Route("/connexion")]
         public ActionResult Connexion()
         {
             return View();

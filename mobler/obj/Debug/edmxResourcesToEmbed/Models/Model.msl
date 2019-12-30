@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MoblerDBModel1StoreContainer" CdmEntityContainer="MoblerDBEntities1">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="MoblerDBModel1.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+          <ScalarProperty Name="Nom_Article" ColumnName="Nom_Article" />
+          <ScalarProperty Name="Description_Article" ColumnName="Description_Article" />
+          <ScalarProperty Name="Prix_Article" ColumnName="Prix_Article" />
+          <ScalarProperty Name="Id_SubCat" ColumnName="Id_SubCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="MoblerDBModel1.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="Id_Cat" ColumnName="Id_Cat" />
+          <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+          <ScalarProperty Name="Img_Cat" ColumnName="Img_Cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devis">
+      <EntityTypeMapping TypeName="MoblerDBModel1.Devi">
+        <MappingFragment StoreEntitySet="Devis">
+          <ScalarProperty Name="Id_Devis" ColumnName="Id_Devis" />
+          <ScalarProperty Name="Nom_Visiteur" ColumnName="Nom_Visiteur" />
+          <ScalarProperty Name="Prenom_Visiteur" ColumnName="Prenom_Visiteur" />
+          <ScalarProperty Name="Email_Visiteur" ColumnName="Email_Visiteur" />
+          <ScalarProperty Name="Tel_Visiteur" ColumnName="Tel_Visiteur" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+          <ScalarProperty Name="Qte" ColumnName="Qte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="MoblerDBModel1.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="Id_Image" ColumnName="Id_Image" />
+          <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+          <ScalarProperty Name="Nom_Image" ColumnName="Nom_Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategories">
+      <EntityTypeMapping TypeName="MoblerDBModel1.SubCategorie">
+        <MappingFragment StoreEntitySet="SubCategorie">
+          <ScalarProperty Name="Id_SubCat" ColumnName="Id_SubCat" />
+          <ScalarProperty Name="Nom_SubCat" ColumnName="Nom_SubCat" />
+          <ScalarProperty Name="Img_SubCat" ColumnName="Img_SubCat" />
+          <ScalarProperty Name="Id_Cat" ColumnName="Id_Cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateurs">
+      <EntityTypeMapping TypeName="MoblerDBModel1.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+          <ScalarProperty Name="Nom_User" ColumnName="Nom_User" />
+          <ScalarProperty Name="Prenom_User" ColumnName="Prenom_User" />
+          <ScalarProperty Name="Email_User" ColumnName="Email_User" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="type_User" ColumnName="type_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,72 @@
+﻿@using mobler.Models;
+@model IEnumerable<Utilisateur>
+@{
+    Layout = "~/Views/Shared/_Layout_Dash.cshtml";
+}
+<section class="checkout_area padding_top">
+    <div class="container">
+        
+        <div class="billing_details">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h3>Ajouter Admin</h3>
+                    <form class="row contact_form" action="/Admin/AjouterAdmin" method="post" novalidate="novalidate">
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="first" name="Nom_User" />
+                            <span class="placeholder" data-placeholder="Nom Admin"></span>
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="last" name="Prenom_User" />
+                            <span class="placeholder" data-placeholder="Prenom Admin"></span>
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="email" name="Email_User" />
+                            <span class="placeholder" data-placeholder="Adresse Email"></span>
+                        </div>
+
+                        <div class="col-md-12 form-group p_star">
+                            <input type="password" class="form-control" id="password" name="Password" />
+                            <span class="placeholder" data-placeholder="Password"></span>
+                        </div>
+                        <div class=" container form-group p_star">
+                            <button type="submit" class="btn_2">
+                                Ajouter
+                            </button>
+                         </div>
+                    </form>
+                </div>
+                <div class="col-lg-7">
+                    <div class="order_box">
+                        <h2><center><b> Les Administrateurs</b> </center></h2>
+                        <ul class="list">
+                            <li>
+                                <center>
+                                    <b> Total :  </b>
+                                    <span class="middle">@ViewBag.Nbr_User</span>
+                                   
+                                </center>
+                                <br />
+                            </li>
+                        </ul>
+                        <table class="table">
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.type_User == 1)
+                                    {
+                                        <tr>
+                                            <td> @item.Nom_User</td>
+                                            <td> @item.Prenom_User</td>
+                                            <td> @item.Email_User</td>
+                                            <td> <a href="/Admin/SupprimerAdmin/@item.Id_User" class="btn_4"> Supprimer</a></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MoblerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id_Article" />
+          </Key>
+          <Property Name="Id_Article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Article" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description_Article" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prix_Article" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Id_SubCat" Type="int" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="Id_Cat" />
+          </Key>
+          <Property Name="Id_Cat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Cat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img_Cat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Devis">
+          <Key>
+            <PropertyRef Name="Id_Devis" />
+          </Key>
+          <Property Name="Id_Devis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_Visiteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom_Visiteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email_Visiteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel_Visiteur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Id_Article" Type="int" />
+          <Property Name="Qte" Type="int" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id_Image" />
+          </Key>
+          <Property Name="Id_Image" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Article" Type="int" />
+          <Property Name="Nom_Image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubCategorie">
+          <Key>
+            <PropertyRef Name="Id_SubCat" />
+          </Key>
+          <Property Name="Id_SubCat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_SubCat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Img_SubCat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_Cat" Type="int" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prenom_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="type_User" Type="int" />
+        </EntityType>
+        <Association Name="FK__Article__Id_SubC__36B12243">
+          <End Role="SubCategorie" Type="Self.SubCategorie" Multiplicity="0..1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategorie">
+              <PropertyRef Name="Id_SubCat" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Id_SubCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devis__Id_Articl__32E0915F">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Devis" Type="Self.Devis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id_Article" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="Id_Article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Images__Id_Artic__35BCFE0A">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id_Article" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Id_Article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubCatego__Id_Ca__37A5467C">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="SubCategorie" Type="Self.SubCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="Id_Cat" />
+            </Principal>
+            <Dependent Role="SubCategorie">
+              <PropertyRef Name="Id_Cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MoblerDBModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devis" EntityType="Self.Devis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategorie" EntityType="Self.SubCategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Article__Id_SubC__36B12243" Association="Self.FK__Article__Id_SubC__36B12243">
+            <End Role="SubCategorie" EntitySet="SubCategorie" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devis__Id_Articl__32E0915F" Association="Self.FK__Devis__Id_Articl__32E0915F">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Images__Id_Artic__35BCFE0A" Association="Self.FK__Images__Id_Artic__35BCFE0A">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubCatego__Id_Ca__37A5467C" Association="Self.FK__SubCatego__Id_Ca__37A5467C">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="SubCategorie" EntitySet="SubCategorie" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoblerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id_Article" />
+          </Key>
+          <Property Name="Id_Article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prix_Article" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Id_SubCat" Type="Int32" />
+          <NavigationProperty Name="SubCategorie" Relationship="Self.FK__Article__Id_SubC__36B12243" FromRole="Article" ToRole="SubCategorie" />
+          <NavigationProperty Name="Devis" Relationship="Self.FK__Devis__Id_Articl__32E0915F" FromRole="Article" ToRole="Devis" />
+          <NavigationProperty Name="Images" Relationship="Self.FK__Images__Id_Artic__35BCFE0A" FromRole="Article" ToRole="Images" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="Id_Cat" />
+          </Key>
+          <Property Name="Id_Cat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Cat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Img_Cat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SubCategories" Relationship="Self.FK__SubCatego__Id_Ca__37A5467C" FromRole="Categorie" ToRole="SubCategorie" />
+        </EntityType>
+        <EntityType Name="Devi">
+          <Key>
+            <PropertyRef Name="Id_Devis" />
+          </Key>
+          <Property Name="Id_Devis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_Visiteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom_Visiteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email_Visiteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel_Visiteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Article" Type="Int32" />
+          <Property Name="Qte" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Devis__Id_Articl__32E0915F" FromRole="Devis" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id_Image" />
+          </Key>
+          <Property Name="Id_Image" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Article" Type="Int32" />
+          <Property Name="Nom_Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Images__Id_Artic__35BCFE0A" FromRole="Images" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="SubCategorie">
+          <Key>
+            <PropertyRef Name="Id_SubCat" />
+          </Key>
+          <Property Name="Id_SubCat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_SubCat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Img_SubCat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Cat" Type="Int32" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__Id_SubC__36B12243" FromRole="SubCategorie" ToRole="Article" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK__SubCatego__Id_Ca__37A5467C" FromRole="SubCategorie" ToRole="Categorie" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type_User" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Article__Id_SubC__36B12243">
+          <End Role="SubCategorie" Type="Self.SubCategorie" Multiplicity="0..1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategorie">
+              <PropertyRef Name="Id_SubCat" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Id_SubCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devis__Id_Articl__32E0915F">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Devis" Type="Self.Devi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id_Article" />
+            </Principal>
+            <Dependent Role="Devis">
+              <PropertyRef Name="Id_Article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Images__Id_Artic__35BCFE0A">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Images" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id_Article" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="Id_Article" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubCatego__Id_Ca__37A5467C">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="0..1" />
+          <End Role="SubCategorie" Type="Self.SubCategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="Id_Cat" />
+            </Principal>
+            <Dependent Role="SubCategorie">
+              <PropertyRef Name="Id_Cat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MoblerDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="Categories" EntityType="Self.Categorie" />
+          <EntitySet Name="Devis" EntityType="Self.Devi" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategorie" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="FK__Article__Id_SubC__36B12243" Association="Self.FK__Article__Id_SubC__36B12243">
+            <End Role="SubCategorie" EntitySet="SubCategories" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devis__Id_Articl__32E0915F" Association="Self.FK__Devis__Id_Articl__32E0915F">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Devis" EntitySet="Devis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Images__Id_Artic__35BCFE0A" Association="Self.FK__Images__Id_Artic__35BCFE0A">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubCatego__Id_Ca__37A5467C" Association="Self.FK__SubCatego__Id_Ca__37A5467C">
+            <End Role="Categorie" EntitySet="Categories" />
+            <End Role="SubCategorie" EntitySet="SubCategories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoblerDBModelStoreContainer" CdmEntityContainer="MoblerDBEntities2">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="MoblerDBModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+                <ScalarProperty Name="Nom_Article" ColumnName="Nom_Article" />
+                <ScalarProperty Name="Description_Article" ColumnName="Description_Article" />
+                <ScalarProperty Name="Prix_Article" ColumnName="Prix_Article" />
+                <ScalarProperty Name="Id_SubCat" ColumnName="Id_SubCat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MoblerDBModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="Id_Cat" ColumnName="Id_Cat" />
+                <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+                <ScalarProperty Name="Img_Cat" ColumnName="Img_Cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devis">
+            <EntityTypeMapping TypeName="MoblerDBModel.Devi">
+              <MappingFragment StoreEntitySet="Devis">
+                <ScalarProperty Name="Id_Devis" ColumnName="Id_Devis" />
+                <ScalarProperty Name="Nom_Visiteur" ColumnName="Nom_Visiteur" />
+                <ScalarProperty Name="Prenom_Visiteur" ColumnName="Prenom_Visiteur" />
+                <ScalarProperty Name="Email_Visiteur" ColumnName="Email_Visiteur" />
+                <ScalarProperty Name="Tel_Visiteur" ColumnName="Tel_Visiteur" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+                <ScalarProperty Name="Qte" ColumnName="Qte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="MoblerDBModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Id_Image" ColumnName="Id_Image" />
+                <ScalarProperty Name="Id_Article" ColumnName="Id_Article" />
+                <ScalarProperty Name="Nom_Image" ColumnName="Nom_Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="MoblerDBModel.SubCategorie">
+              <MappingFragment StoreEntitySet="SubCategorie">
+                <ScalarProperty Name="Id_SubCat" ColumnName="Id_SubCat" />
+                <ScalarProperty Name="Nom_SubCat" ColumnName="Nom_SubCat" />
+                <ScalarProperty Name="Img_SubCat" ColumnName="Img_SubCat" />
+                <ScalarProperty Name="Id_Cat" ColumnName="Id_Cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="MoblerDBModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="Nom_User" ColumnName="Nom_User" />
+                <ScalarProperty Name="Prenom_User" ColumnName="Prenom_User" />
+                <ScalarProperty Name="Email_User" ColumnName="Email_User" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="type_User" ColumnName="type_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -24,6 +24,7 @@ namespace mobler.Models
         public int Id_Article { get; set; }
         public string Nom_Article { get; set; }
         public string Description_Article { get; set; }
+        public string Img_Article { get; set; }
         public Nullable<decimal> Prix_Article { get; set; }
         public Nullable<int> Id_SubCat { get; set; }
     
